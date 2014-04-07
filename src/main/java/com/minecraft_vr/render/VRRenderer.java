@@ -78,15 +78,25 @@ public class VRRenderer extends EntityRenderer {
         
         //TODO: bind to main render FB
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-        for( int j = 0; j < 2; j++ )
+        final int RENDER_MODE = 1; // Mono
+        //final int RENDER_MODE = 2; // Stereo
+
+        for( int j = 0; j < RENDER_MODE; j++ )
         {
-            if( j == 0 )
+            if (RENDER_MODE == 1)
             {
-            	GL11.glViewport(0, 0, this.mc.displayWidth/2, this.mc.displayHeight);
+                GL11.glViewport(0, 0, this.mc.displayWidth, this.mc.displayHeight);
             }
             else
             {
-            	GL11.glViewport(this.mc.displayWidth/2, 0, this.mc.displayWidth/2, this.mc.displayHeight);
+                if (j == 0)
+                {
+                    GL11.glViewport(0, 0, this.mc.displayWidth / 2, this.mc.displayHeight);
+                }
+                else
+                {
+                    GL11.glViewport(this.mc.displayWidth / 2, 0, this.mc.displayWidth / 2, this.mc.displayHeight);
+                }
             }
 
             this.mc.mcProfiler.endStartSection("camera");
