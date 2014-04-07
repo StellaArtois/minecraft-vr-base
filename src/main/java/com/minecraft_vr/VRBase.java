@@ -8,9 +8,13 @@ import com.minecraft_vr.render.FrameBufferShim;
 import com.minecraft_vr.render.VRRenderer;
 
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+
+import java.io.File;
 
 @Mod(modid = VRBase.MODID, version = VRBase.VERSION)
 public class VRBase
@@ -24,6 +28,17 @@ public class VRBase
     	
     }
     private static VRBase inst;
+
+    public void preInit(FMLPreInitializationEvent event)
+    {
+        File cfg = event.getSuggestedConfigurationFile();
+        String cfgPath = cfg.getAbsolutePath();
+
+        // Read the Vrbase.cfg (old VROptions.txt)
+        config = new Configuration(event.getSuggestedConfigurationFile());
+        config.load();
+        config.save();
+    }
     
     @EventHandler
     public void init(FMLInitializationEvent event)
@@ -45,5 +60,6 @@ public class VRBase
     public static IHeadOrientation headOrientation;
     public static IHeadPosition    headPosition;
     public static IHMD             hmd;
+    public static Configuration    config;
     
 }
