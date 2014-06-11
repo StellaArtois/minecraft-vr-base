@@ -26,6 +26,13 @@ minecraft {
     assetDir = "eclipse/assets"
 }
 
+repositories {
+	maven {
+		name = "minecraft-vr"
+		url = "http://repo.minecraft-vr.com/"
+	}
+}
+
 dependencies {
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
@@ -40,6 +47,8 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+	// JRift
+	compile 'de.fruitfly.ovr:JRift:0.2.5.4'	
 }
 
 processResources
