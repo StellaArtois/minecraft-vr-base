@@ -20,11 +20,13 @@ BUILDING
 
 Uses gradle.
 
-gradle setupDecompWorkspace will create a development workspace
-gradle eclipse will create an eclipse project in this directory
-gradle idea will create an intelij project in this directory
+gradlew setupDecompWorkspace will create a development workspace
+gradlew eclipse will create an eclipse project in this directory
+gradlew idea will create an intelij project in this directory
 
-gradle build will build all dependencies and the mod.
+gradlew build will build all dependencies and the mod.
+
+gradlew cleanCache clean setupDecompWorkspace --refresh-dependencies --debug
 
 Launch configuration:
 
