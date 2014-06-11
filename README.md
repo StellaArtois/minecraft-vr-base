@@ -3,7 +3,7 @@ Minecraft VR Forge Mod (base)
 
 Minecraft Version: 1.7.2
 
-Current Version: 0.0 (this doesn't do anything you want it to yet!)
+Current Version: 0.1 (this doesn't do anything you want it to yet!)
 
 Copyright StellaArtois, mabrowning 2014. See LICENSE.md for more.
 
@@ -20,8 +20,9 @@ BUILDING
 
 Uses gradle.
 
-gradle setupDecompWorkspace will create a development worksapce
+gradle setupDecompWorkspace will create a development workspace
 gradle eclipse will create an eclipse project in this directory
+gradle idea will create an intelij project in this directory
 
 gradle build will build all dependencies and the mod.
 
