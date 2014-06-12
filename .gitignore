@@ -22,3 +22,4 @@ minecraft-vr-base.ipr
 minecraft-vr-base.iws
 out/
 gradle.buildlog
+run/
