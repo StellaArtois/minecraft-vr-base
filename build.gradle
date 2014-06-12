@@ -27,8 +27,12 @@ minecraft {
 }
 
 project.ext {
-	jRiftVersion = '0.3.1.1'
-	jRiftLibraryVersion = '0.3.1.1'
+	jRiftVersion              = '0.3.1.1'
+	jRiftLibraryVersion       = '0.3.1.1'
+	jMumbleVersion            = '1.0'
+	jMumbleLibraryVersion     = '1.1'
+	sixenseJavaVersion        = '062612.1'
+	sixenseJavaLibraryVersion = '062612.0'
 }
 
 repositories {
@@ -44,6 +48,18 @@ dependencies {
 	runtime 'de.fruitfly.ovr:JRiftLibrary:$jRiftLibraryVersion:natives-windows'
 	runtime 'de.fruitfly.ovr:JRiftLibrary:$jRiftLibraryVersion:natives-linux'
 	runtime 'de.fruitfly.ovr:JRiftLibrary:$jRiftLibraryVersion:natives-osx'
+	
+	// Sixense
+	compile 'com.sixense:SixenseJava:$sixenseJavaVersion'
+	runtime 'com.sixense:SixenseJavaLibrary:$sixenseJavaLibraryVersion:natives-windows'
+	runtime 'com.sixense:SixenseJavaLibrary:$sixenseJavaLibraryVersion:natives-linux'
+	runtime 'com.sixense:SixenseJavaLibrary:$sixenseJavaLibraryVersion:natives-osx'
+	
+	// JMumble
+	compile 'net.aib42.mumblelink:JMumble:$jMumbleVersion'
+	runtime 'net.aib42.mumblelink:JMumbleLibrary:$jMumbleLibraryVersion:natives-windows'
+	runtime 'net.aib42.mumblelink:JMumbleLibrary:$jMumbleLibraryVersion:natives-linux'
+	runtime 'net.aib42.mumblelink:JMumbleLibrary:$jMumbleLibraryVersion:natives-osx'
 }
 
 processResources
