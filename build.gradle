@@ -23,7 +23,12 @@ archivesBaseName = "minecraft-vr_base"
 
 minecraft {
     version = "1.7.2-10.12.1.1117"
-    assetDir = "eclipse/assets"
+    assetDir = "run/assets"
+}
+
+project.ext {
+	jRiftVersion = '0.3.1.1'
+	jRiftLibraryVersion = '0.3.1.1'
 }
 
 repositories {
@@ -34,27 +39,34 @@ repositories {
 }
 
 dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-      
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
 	// JRift
-	compile 'de.fruitfly.ovr:JRift:0.3.1.1'
-	runtime 'de.fruitfly.ovr:JRiftLibrary:0.3.1.1:natives-windows'
-	runtime 'de.fruitfly.ovr:JRiftLibrary:0.3.1.1:natives-linux'
-	runtime 'de.fruitfly.ovr:JRiftLibrary:0.3.1.1:natives-osx'
+	compile 'de.fruitfly.ovr:JRift:$jRiftVersion'
+	runtime 'de.fruitfly.ovr:JRiftLibrary:$jRiftLibraryVersion:natives-windows'
+	runtime 'de.fruitfly.ovr:JRiftLibrary:$jRiftLibraryVersion:natives-linux'
+	runtime 'de.fruitfly.ovr:JRiftLibrary:$jRiftLibraryVersion:natives-osx'
 }
 
-// Thanks to kiras, Szczepan Faber
+processResources
+{
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+// Natives extraction - thanks to kiras, Szczepan Faber for their example
 platforms = ['windows', 'linux', 'osx']
 platforms.each { platform ->
     task "${platform}Natives" {
@@ -76,26 +88,6 @@ platforms.each { platform ->
 
 task natives {
     description "Copies native libraries to an appropriate directory."
-	logger.info('Finding/copying natives...')// for' + Platform.getOperatingSystem().getDisplayName())
+	logger.info('Finding/copying natives...')// for ' + Platform.getOperatingSystem().getDisplayName())
     dependsOn platforms.collect { "${it}Natives" }.findAll { tasks[it] }
-}
-
-processResources
-{
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
 }
