@@ -23,10 +23,12 @@ Uses gradle.
 gradlew setupDecompWorkspace will create a development workspace
 gradlew eclipse will create an eclipse project in this directory
 gradlew idea will create an intelij project in this directory
+gradlew natives will copy the minecraft-vr natives into the dev env
 
 gradlew build will build all dependencies and the mod.
 
-gradlew cleanCache clean setupDecompWorkspace --refresh-dependencies --debug
+gradlew cleanCache clean setupDecompWorkspace --refresh-dependencies --info
+gradlew idea natives --info
 
 Launch configuration:
 
