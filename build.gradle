@@ -49,7 +49,36 @@ dependencies {
 
 	// JRift
 	compile 'de.fruitfly.ovr:JRift:0.2.5.4'	
+	runtime 'de.fruitfly.ovr:JRiftLibrary:0.2.5.3'
 }
+
+// Thanks to kiras, Szczepan Faber
+platforms = ['windows', 'linux', 'osx']
+platforms.each { platform ->
+    task "${platform}Natives" {
+        outputDir = "$buildDir/natives/$platform"
+        inputs.files(configurations.compile)
+        outputs.dir(outputDir)
+        doLast {
+            copy {
+                def artifacts = configurations.compile.resolvedConfiguration.resolvedArtifacts
+                    .findAll { it.classifier == "natives-$platform" }
+                artifacts.each { 
+                    from zipTree(it.file)
+                }            
+                into outputDir
+            }
+        }
+    }
+}
+
+task natives {
+    description "Copies native libraries to an appropriate directory."
+    dependsOn platforms.collect { "${it}Natives" }.findAll { tasks[it] }
+}
+
+natives.mustRunAfter idea
+natives.mustRunAfter eclipse
 
 processResources
 {
