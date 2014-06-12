@@ -44,22 +44,22 @@ repositories {
 
 dependencies {
 	// JRift
-	compile 'de.fruitfly.ovr:JRift:$jRiftVersion'
-	runtime 'de.fruitfly.ovr:JRiftLibrary:$jRiftLibraryVersion:natives-windows'
-	runtime 'de.fruitfly.ovr:JRiftLibrary:$jRiftLibraryVersion:natives-linux'
-	runtime 'de.fruitfly.ovr:JRiftLibrary:$jRiftLibraryVersion:natives-osx'
+	compile 'de.fruitfly.ovr:JRift:' + project.ext.jRiftVersion
+	runtime 'de.fruitfly.ovr:JRiftLibrary:' + project.ext.jRiftLibraryVersion + ':natives-windows'
+	runtime 'de.fruitfly.ovr:JRiftLibrary:' + project.ext.jRiftLibraryVersion + ':natives-linux'
+	runtime 'de.fruitfly.ovr:JRiftLibrary:' + project.ext.jRiftLibraryVersion + ':natives-osx'
 	
 	// Sixense
-	compile 'com.sixense:SixenseJava:$sixenseJavaVersion'
-	runtime 'com.sixense:SixenseJavaLibrary:$sixenseJavaLibraryVersion:natives-windows'
-	runtime 'com.sixense:SixenseJavaLibrary:$sixenseJavaLibraryVersion:natives-linux'
-	runtime 'com.sixense:SixenseJavaLibrary:$sixenseJavaLibraryVersion:natives-osx'
+	compile 'com.sixense:SixenseJava:' + project.ext.sixenseJavaVersion
+	runtime 'com.sixense:SixenseJavaLibrary:' + project.ext.sixenseJavaLibraryVersion + ':natives-windows'
+	runtime 'com.sixense:SixenseJavaLibrary:' + project.ext.sixenseJavaLibraryVersion + ':natives-linux'
+	runtime 'com.sixense:SixenseJavaLibrary:' + project.ext.sixenseJavaLibraryVersion + ':natives-osx'
 	
 	// JMumble
-	compile 'net.aib42.mumblelink:JMumble:$jMumbleVersion'
-	runtime 'net.aib42.mumblelink:JMumbleLibrary:$jMumbleLibraryVersion:natives-windows'
-	runtime 'net.aib42.mumblelink:JMumbleLibrary:$jMumbleLibraryVersion:natives-linux'
-	runtime 'net.aib42.mumblelink:JMumbleLibrary:$jMumbleLibraryVersion:natives-osx'
+	compile 'net.aib42.mumblelink:JMumble:' + project.ext.jMumbleVersion
+	runtime 'net.aib42.mumblelink:JMumbleLibrary:' + project.ext.jMumbleLibraryVersion + ':natives-windows'
+	runtime 'net.aib42.mumblelink:JMumbleLibrary:' + project.ext.jMumbleLibraryVersion + ':natives-linux'
+	runtime 'net.aib42.mumblelink:JMumbleLibrary:' + project.ext.jMumbleLibraryVersion + ':natives-osx'
 }
 
 processResources
