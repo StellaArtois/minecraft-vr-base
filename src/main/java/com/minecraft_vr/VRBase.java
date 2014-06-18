@@ -47,13 +47,13 @@ public class VRBase
 
     	//Swap out renderer
         Minecraft mc = Minecraft.getMinecraft();
-        mc.entityRenderer = new VRRenderer(mc.entityRenderer);
-        mc.framebufferMc = new FrameBufferShim( mc.framebufferMc );
+        //mc.entityRenderer = new VRRenderer(mc.entityRenderer);
+        //mc.framebufferMc = new FrameBufferShim( mc.framebufferMc );
     }
     
     public void RegisterPlugin( IBodyOrientation bodyOrient )
     {
-    	
+    	 // This is the
     }
     
     public static IBodyOrientation bodyOrientation;

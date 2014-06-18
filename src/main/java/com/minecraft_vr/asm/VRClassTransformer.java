@@ -12,19 +12,20 @@ import net.minecraft.launchwrapper.IClassTransformer;
 public class VRClassTransformer implements IClassTransformer {
 
 	@Override
-	public byte[] transform(String name, String transformedName, byte[] bytes) {
-		if( name.equals( "net.minecraft.client.gui.GuiMainMenu" ) )
-			return transformMainMenu( bytes, false );
-		else if( name.equals( "btj" ) )
-			return transformMainMenu( bytes, true );
-		else if( name.equals( "net.minecraft.client.gui.GuiIngame"))
-			return transformGuiIngame( bytes, false );
-		else if( name.equals( "bah"))
-			return transformGuiIngame( bytes, true );
-		else if( name.equals( "net.minecraft.client.gui.GuiScreen"))
-			return transformGuiScreen( bytes, false );
-		else if( name.equals( "bcd"))
-			return transformGuiScreen( bytes, true );
+	public byte[] transform(String name, String transformedName, byte[] bytes)
+    {
+//		if( name.equals( "net.minecraft.client.gui.GuiMainMenu" ) )
+//			return transformMainMenu( bytes, false );
+//		else if( name.equals( "btj" ) )
+//			return transformMainMenu( bytes, true );
+//		else if( name.equals( "net.minecraft.client.gui.GuiIngame"))
+//			return transformGuiIngame( bytes, false );
+//		else if( name.equals( "bah"))
+//			return transformGuiIngame( bytes, true );
+//		else if( name.equals( "net.minecraft.client.gui.GuiScreen"))
+//			return transformGuiScreen( bytes, false );
+//		else if( name.equals( "bcd"))
+//			return transformGuiScreen( bytes, true );
 		
 		return bytes;
 	}
