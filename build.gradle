@@ -27,6 +27,7 @@ minecraft {
 }
 
 project.ext {
+	optifineVersion           = '1.7.2_HD_U_D1'
 	jRiftVersion              = '0.3.1.1'
 	jRiftLibraryVersion       = '0.3.1.1'
 	jMumbleVersion            = '1.0'
@@ -43,6 +44,9 @@ repositories {
 }
 
 dependencies {
+	// Optifine
+	//compile 'optifine:OptiFine:' + project.ext.optifineVersion
+
 	// JRift
 	compile 'de.fruitfly.ovr:JRift:' + project.ext.jRiftVersion
 	runtime 'de.fruitfly.ovr:JRiftLibrary:' + project.ext.jRiftLibraryVersion + ':natives-windows'
