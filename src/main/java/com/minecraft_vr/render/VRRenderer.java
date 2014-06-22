@@ -516,4 +516,13 @@ public class VRRenderer extends EntityRenderer {
 		to.debugViewDirection = from.debugViewDirection;
 	}
 
+    public void startCalibration()
+    {
+        // TODO:
+    }
+
+    public void resetGuiYawOrientation()
+    {
+        // TODO:
+    }
 }
