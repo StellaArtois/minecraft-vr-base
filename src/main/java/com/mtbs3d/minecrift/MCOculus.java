@@ -14,6 +14,7 @@ import de.fruitfly.ovr.UserProfileData;
 import de.fruitfly.ovr.enums.EyeType;
 import de.fruitfly.ovr.structs.*;
 import net.minecraft.util.Vec3;
+import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Quaternion;
 
 public class MCOculus extends OculusRift //OculusRift does most of the heavy lifting 
@@ -32,6 +33,26 @@ public class MCOculus extends OculusRift //OculusRift does most of the heavy lif
     private int MagCalSampleCount = 0;
     private boolean forceMagCalibration = false; // Don't force mag cal initially
     private FrameTiming frameTiming = new FrameTiming();
+
+    @Override
+    public EyeType eyeRenderOrder(int index)
+    {
+        HmdDesc desc = getHMDInfo();
+        if (index < 0 || index >= desc.EyeRenderOrder.length)
+            return EyeType.ovrEye_Left;
+
+        return desc.EyeRenderOrder[index];
+    }
+
+    @Override
+    public boolean usesDistortion() {
+        return true;
+    }
+
+    @Override
+    public boolean isStereo() {
+        return true;
+    }
 
     public FrameTiming getFrameTiming() { return frameTiming; };
 
@@ -62,6 +83,7 @@ public class MCOculus extends OculusRift //OculusRift does most of the heavy lif
     public void endFrame()
     {
         super.endFrame();
+        Display.processMessages();
     }
 
     @Override
@@ -234,16 +256,9 @@ public class MCOculus extends OculusRift //OculusRift does most of the heavy lif
     }
 
     @Override
-    public void poll(float delta)
+    public void poll(/*EyeType eyeHint, */float delta)
     {
-        if (isInitialized())
-        {
-//            if (delta != 0f)
-//            {
-//                //_setPredictionEnabled(delta, true);
-//            }
-            super.poll(delta);
-        }
+        // Do nothing
     }
 
 

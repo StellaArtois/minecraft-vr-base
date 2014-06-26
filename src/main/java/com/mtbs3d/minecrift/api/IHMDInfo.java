@@ -22,16 +22,6 @@ public interface IHMDInfo extends IBasePlugin
 	public HmdDesc getHMDInfo();
 	//public SensorInfo getSensorInfo();
 
-    public FovTextureInfo getFovTextureSize(float renderScaleFactor);
-
-    public EyeRenderParams configureRendering(Sizei InTextureSize,
-                                              Sizei OutTextureSize,
-                                              GLConfig glConfig,
-                                              boolean VSyncEnabled,
-                                              boolean useChromaticAbCorrection,
-                                              boolean useTimewarp,
-                                              boolean useVignette);
-
     /**
      * Sets/saves the IPD for use in the eyeRenderParams
      * 

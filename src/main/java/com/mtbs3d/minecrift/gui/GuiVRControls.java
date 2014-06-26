@@ -33,7 +33,7 @@ public class GuiVRControls extends BaseGuiSettings {
 		}
 
 		@Override
-		protected void elementClicked(int controlIndex, boolean var2) {
+		protected void elementClicked(int controlIndex, boolean var2, int mousex, int mousey) {
 			if( currentlyBinding > -1 && currentlyBinding != controlIndex ) {
 				ControlBinding.bindings.get(currentlyBinding).doneBinding();
                 Minecraft.getMinecraft().lookaimController.mapBinding(null);
@@ -58,7 +58,7 @@ public class GuiVRControls extends BaseGuiSettings {
 		}
 
 		@Override
-		protected void drawSlot(int index, int xPos, int yPos, int height, Tessellator var5) {
+		protected void drawSlot(int index, int xPos, int yPos, int height, Tessellator var5, int mousex, int mousey) {
 			String display = "";
 			if( index == currentlyBinding ) {
 				display = "" + EnumChatFormatting.WHITE + "> " + EnumChatFormatting.YELLOW + "??? " + EnumChatFormatting.WHITE + "<";

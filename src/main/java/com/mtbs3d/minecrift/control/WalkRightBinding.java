@@ -5,6 +5,7 @@
 package com.mtbs3d.minecrift.control;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 
 public class WalkRightBinding extends ControlBinding {
 	public WalkRightBinding() {

@@ -5,11 +5,9 @@
 package com.mtbs3d.minecrift.api;
 
 
+import de.fruitfly.ovr.EyeRenderParams;
 import de.fruitfly.ovr.enums.EyeType;
-import de.fruitfly.ovr.structs.FovPort;
-import de.fruitfly.ovr.structs.FrameTiming;
-import de.fruitfly.ovr.structs.Matrix4f;
-import de.fruitfly.ovr.structs.Posef;
+import de.fruitfly.ovr.structs.*;
 
 /**
  * Implement this to provide Minecrift with stereo rendering services
@@ -19,7 +17,21 @@ import de.fruitfly.ovr.structs.Posef;
  */
 public interface IStereoProvider extends IBasePlugin
 {
-    //public EyeType eyeRenderOrder(int index);
+    public FovTextureInfo getFovTextureSize(float renderScaleFactor);
+
+    public EyeRenderParams configureRendering(Sizei InTextureSize,
+                                              Sizei OutTextureSize,
+                                              GLConfig glConfig,
+                                              boolean VSyncEnabled,
+                                              boolean useChromaticAbCorrection,
+                                              boolean useTimewarp,
+                                              boolean useVignette);
+
+    public EyeType eyeRenderOrder(int index);
+
+    public boolean usesDistortion();
+
+    public boolean isStereo();
 
     public FrameTiming getFrameTiming();
 

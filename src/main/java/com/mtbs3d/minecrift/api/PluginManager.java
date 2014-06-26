@@ -1,6 +1,10 @@
 package com.mtbs3d.minecrift.api;
 
+import de.fruitfly.ovr.enums.EyeType;
+import de.fruitfly.ovr.structs.Posef;
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.Vec3;
+import org.lwjgl.util.vector.Quaternion;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -191,6 +195,48 @@ public class PluginManager implements IEventListener
         {
             if( p.isInitialized() )
                 p.beginFrame();
+        }
+    }
+
+    public static Posef beginEyeRender(EyeType eye)
+    {
+        Posef pose = new Posef();
+
+        // Poll all plugins
+        pollAll(0f);
+
+        // Pull together position, orientation information (TODO: also body orientation)
+        for( IBasePlugin p : thePluginManager.allPlugins )
+        {
+            if( p instanceof IEyePositionProvider && p.isInitialized() ) {
+                Vec3 pos = ((IEyePositionProvider) p).getEyePosition(eye);
+                if (pos != null) {
+                    pose.Position.x = (float) pos.xCoord;
+                    pose.Position.y = (float) pos.yCoord;
+                    pose.Position.z = (float) pos.zCoord;
+                }
+            }
+
+            if (p instanceof IOrientationProvider && p.isInitialized() ) {
+                Quaternion orient = ((IOrientationProvider) p).getOrientationQuaternion();
+                if (orient != null) {
+                    pose.Orientation.x = orient.x;
+                    pose.Orientation.y = orient.y;
+                    pose.Orientation.z = orient.z;
+                    pose.Orientation.w = orient.w;
+                }
+            }
+        }
+
+        return pose;
+    }
+
+    public static void endEyeRenderAll(EyeType eye)
+    {
+        for( IBasePlugin p : thePluginManager.allPlugins )
+        {
+            if( p instanceof IStereoProvider &&  p.isInitialized() )
+                ((IStereoProvider)p).endEyeRender(eye);
         }
     }
 

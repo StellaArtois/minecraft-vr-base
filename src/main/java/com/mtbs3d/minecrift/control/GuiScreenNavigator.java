@@ -388,7 +388,7 @@ public class GuiScreenNavigator {
 	protected void parsePoints() {
 		points.clear();
         for (GuiButton button : screen.buttonList ) {
-        	if( button.drawButton )
+        	if( button.visible )
         		points.add(Pair.of(button.xPosition+5,button.yPosition+5));
         }
         if( screen instanceof GuiContainer ) {

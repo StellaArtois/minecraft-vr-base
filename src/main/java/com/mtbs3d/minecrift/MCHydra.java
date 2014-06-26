@@ -347,7 +347,7 @@ public class MCHydra extends BasePlugin implements IEyePositionProvider, IOrient
 		        if( cont2.trigger > 0.05 )
 		        {
 		        	if( !leftMouseClicked )
-		        		mc.clickMouse(0);
+		        		mc.func_147116_af();
 		        	settings.keyBindAttack.pressed = true;
 		        	leftMouseClicked = true;
 		        }
@@ -360,7 +360,7 @@ public class MCHydra extends BasePlugin implements IEyePositionProvider, IOrient
 		        if((cont2.buttons & EnumButton.BUMPER.mask()) >0 && 
 		        	 (lastcont2Buttons & EnumButton.BUMPER.mask()) == 0)
 		        {
-		        	mc.clickMouse(1);
+		        	mc.func_147121_ag();
 		        }
 
 	        	settings.keyBindUseItem.pressed = (cont2.buttons & EnumButton.BUMPER.mask()) >0 ;
