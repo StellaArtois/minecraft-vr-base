@@ -43,7 +43,7 @@ public class QuaternionHelper
     {
         Quaternion input = QuaternionHelper.clone(q1);
         float inputMagnitude = QuaternionHelper.magnitude(input);
-        Vec3 nHat = Vec3.fakePool.getVecFromPool(input.x, input.y, input.z).normalize();
+        Vec3 nHat = Vec3.createVectorHelper(input.x, input.y, input.z).normalize();
         Quaternion vectorBit = QuaternionHelper.exp(QuaternionHelper.scalarMultiply(new Quaternion((float)nHat.xCoord, (float)nHat.yCoord, (float)nHat.zCoord, 0), (float)(power * Math.acos(input.w / inputMagnitude))));
         return QuaternionHelper.scalarMultiply(vectorBit, (float)Math.pow(inputMagnitude, power));
     }
@@ -58,9 +58,9 @@ public class QuaternionHelper
     public static Quaternion exp(Quaternion input)
     {
         float inputA = input.w;
-        Vec3 inputV = Vec3.fakePool.getVecFromPool(input.x, input.y, input.z);
+        Vec3 inputV = Vec3.createVectorHelper(input.x, input.y, input.z);
         float outputA = (float)(Math.exp(inputA) * Math.cos(inputV.lengthVector()));
-        Vec3 outputV = Vec3.fakePool.getVecFromPool(0, 0, 0);
+        Vec3 outputV = Vec3.createVectorHelper(0, 0, 0);
         outputV.xCoord = Math.exp(inputA) * (inputV.normalize().xCoord * (float)Math.sin(inputV.lengthVector()));
         outputV.yCoord = Math.exp(inputA) * (inputV.normalize().yCoord * (float)Math.sin(inputV.lengthVector()));
         outputV.zCoord = Math.exp(inputA) * (inputV.normalize().zCoord * (float)Math.sin(inputV.lengthVector()));

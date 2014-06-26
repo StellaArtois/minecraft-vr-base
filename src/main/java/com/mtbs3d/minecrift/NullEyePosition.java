@@ -82,13 +82,13 @@ public class NullEyePosition extends BasePlugin implements IEyePositionProvider 
                        float worldYawOffsetDegrees, float worldPitchOffsetDegrees, float worldRollOffsetDegrees)
     {
         float cameraYaw = (worldYawOffsetDegrees + yawHeadDegrees ) % 360;
-        headPos = Vec3.fakePool.getVecFromPool(0, Minecraft.getMinecraft().vrSettings.neckBaseToEyeHeight, -Minecraft.getMinecraft().vrSettings.eyeProtrusion);
+        headPos = Vec3.createVectorHelper(0, Minecraft.getMinecraft().vrSettings.neckBaseToEyeHeight, -Minecraft.getMinecraft().vrSettings.eyeProtrusion);
 		headPos.rotateAroundZ( rollHeadDegrees  * PIOVER180 );
 		headPos.rotateAroundX( pitchHeadDegrees * PIOVER180 );
         headPos.rotateAroundY( -cameraYaw * PIOVER180 );
-        leftEyePos = Vec3.fakePool.getVecFromPool(headPos.xCoord, headPos.yCoord, headPos.zCoord);
+        leftEyePos = Vec3.createVectorHelper(headPos.xCoord, headPos.yCoord, headPos.zCoord);
         leftEyePos.xCoord -= (ipd / 2f);
-        rightEyePos = Vec3.fakePool.getVecFromPool(headPos.xCoord, headPos.yCoord, headPos.zCoord);
+        rightEyePos = Vec3.createVectorHelper(headPos.xCoord, headPos.yCoord, headPos.zCoord);
         rightEyePos.xCoord += (ipd / 2f);
 	}
 

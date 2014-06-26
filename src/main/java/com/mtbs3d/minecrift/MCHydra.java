@@ -608,9 +608,9 @@ public class MCHydra extends BasePlugin implements IEyePositionProvider, IOrient
         // Rotate the centre eye position around any world yaw offset (mouse/controller induced rotation)
         headPos.rotateAroundY(-worldYawOffsetDegrees*PIOVER180);
 
-        leftEyePos = Vec3.fakePool.getVecFromPool(headPos.xCoord, headPos.yCoord, headPos.zCoord);
+        leftEyePos = Vec3.createVectorHelper(headPos.xCoord, headPos.yCoord, headPos.zCoord);
         leftEyePos.xCoord -= (ipd / 2f);
-        rightEyePos = Vec3.fakePool.getVecFromPool(headPos.xCoord, headPos.yCoord, headPos.zCoord);
+        rightEyePos = Vec3.createVectorHelper(headPos.xCoord, headPos.yCoord, headPos.zCoord);
         rightEyePos.xCoord += (ipd / 2f);
 
         //System.out.println(String.format("Positional Track: (l/r)x=%.3fcm, (up/down)y=%.3fcm, (in/out)z=%.3fcm", new Object[] {Float.valueOf((float)headPos.xCoord * 100.0f), Float.valueOf((float)headPos.yCoord * 100.0f), Float.valueOf((float)headPos.zCoord * 100.0f)}));

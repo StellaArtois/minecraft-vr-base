@@ -24,7 +24,7 @@ public class SessionID
         String sessionID = "token:" + pieces[3] + ":" + pieces[13];    // TODO: Get these values based on json field name, not just index location (which may change and then be invalid!)
         String userName = pieces[17];
         String profileName = null;
-        Session session = new Session(userName, profileName, sessionID);   // TODO: May need to use something other than null ProfileName
+        Session session = new Session(userName, profileName, sessionID, "legacy");   // TODO: May need to use something other than null ProfileName
         return session;
     }
 
