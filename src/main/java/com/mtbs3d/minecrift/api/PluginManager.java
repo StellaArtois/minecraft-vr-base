@@ -205,18 +205,18 @@ public class PluginManager implements IEventListener
         // Poll all plugins
         pollAll(0f);
 
-        // Pull together position, orientation information (TODO: also body orientation)
+        // Mark beginEyeRender with stereo providers
         for( IBasePlugin p : thePluginManager.allPlugins )
         {
-            if( p instanceof IEyePositionProvider && p.isInitialized() ) {
-                Vec3 pos = ((IEyePositionProvider) p).getEyePosition(eye);
-                if (pos != null) {
-                    pose.Position.x = (float) pos.xCoord;
-                    pose.Position.y = (float) pos.yCoord;
-                    pose.Position.z = (float) pos.zCoord;
-                }
-            }
+            if( p instanceof IStereoProvider && p.isInitialized() )
+                ((IStereoProvider)p).beginEyeRender(eye);
+        }
 
+        // Pull together position, orientation information (TODO: also body orientation)
+
+        // Get orient first...
+        for( IBasePlugin p : thePluginManager.allPlugins )
+        {
             if (p instanceof IOrientationProvider && p.isInitialized() ) {
                 Quaternion orient = ((IOrientationProvider) p).getOrientationQuaternion();
                 if (orient != null) {
@@ -224,6 +224,21 @@ public class PluginManager implements IEventListener
                     pose.Orientation.y = orient.y;
                     pose.Orientation.z = orient.z;
                     pose.Orientation.w = orient.w;
+                }
+            }
+        }
+
+        // ...as some position providers also require orientation information
+        for( IBasePlugin p : thePluginManager.allPlugins )
+        {
+            if (p instanceof IEyePositionProvider && p.isInitialized())
+            {
+                Vec3 pos = ((IEyePositionProvider) p).getEyePosition(eye);
+                if (pos != null)
+                {
+                    pose.Position.x = (float) pos.xCoord;
+                    pose.Position.y = (float) pos.yCoord;
+                    pose.Position.z = (float) pos.zCoord;
                 }
             }
         }

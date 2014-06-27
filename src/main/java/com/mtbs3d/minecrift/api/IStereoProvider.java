@@ -27,6 +27,15 @@ public interface IStereoProvider extends IBasePlugin
                                               boolean useTimewarp,
                                               boolean useVignette);
 
+    public EyeRenderParams configureRenderingDualTexture(Sizei InTexture1Size,
+                                                         Sizei InTexture2Size,
+                                                         Sizei OutDisplaySize,
+                                                         GLConfig glConfig,
+                                                         boolean VSyncEnabled,
+                                                         boolean useChromaticAbCorrection,
+                                                         boolean useTimewarp,
+                                                         boolean useVignette);
+
     public EyeType eyeRenderOrder(int index);
 
     public boolean usesDistortion();

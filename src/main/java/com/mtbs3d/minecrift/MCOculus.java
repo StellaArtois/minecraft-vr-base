@@ -15,6 +15,8 @@ import de.fruitfly.ovr.enums.EyeType;
 import de.fruitfly.ovr.structs.*;
 import net.minecraft.util.Vec3;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL15;
 import org.lwjgl.util.vector.Quaternion;
 
 public class MCOculus extends OculusRift //OculusRift does most of the heavy lifting 
@@ -82,7 +84,15 @@ public class MCOculus extends OculusRift //OculusRift does most of the heavy lif
 
     public void endFrame()
     {
+        GL11.glDisable(GL11.GL_CULL_FACE);  // Oculus wants CW orientations, avoid the problem by turning off culling...
+        GL11.glDisable(GL11.GL_DEPTH_TEST); // Nothing is drawn with depth test on...
+
+        // End the frame
         super.endFrame();
+
+        GL11.glEnable(GL11.GL_CULL_FACE); // Turn back on...
+        GL11.glEnable(GL11.GL_DEPTH_TEST); // Turn back on...
+
         Display.processMessages();
     }
 
