@@ -22,7 +22,7 @@ group= "com.minecraft-vr.base"
 archivesBaseName = "minecraft-vr_base"
 
 minecraft {
-    version = "1.7.10_pre4-10.12.2.1148-prerelease"
+    version = "1.7.10-10.13.0.1152"
     assetDir = "run/assets"
 }
 
