@@ -36,6 +36,8 @@ public interface IStereoProvider extends IBasePlugin
                                                          boolean useTimewarp,
                                                          boolean useVignette);
 
+    public void resetRenderConfig();
+
     public EyeType eyeRenderOrder(int index);
 
     public boolean usesDistortion();

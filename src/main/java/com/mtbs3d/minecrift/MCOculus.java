@@ -14,6 +14,7 @@ import de.fruitfly.ovr.UserProfileData;
 import de.fruitfly.ovr.enums.EyeType;
 import de.fruitfly.ovr.structs.*;
 import net.minecraft.util.Vec3;
+import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
@@ -90,8 +91,11 @@ public class MCOculus extends OculusRift //OculusRift does most of the heavy lif
         // End the frame
         super.endFrame();
 
+        GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0); // Unbind GL_ARRAY_BUFFER for my own vertex arrays to work...
         GL11.glEnable(GL11.GL_CULL_FACE); // Turn back on...
         GL11.glEnable(GL11.GL_DEPTH_TEST); // Turn back on...
+        GL11.glClearDepth(1); // Oculus set this to 0 (the near plane), return to normal...
+        ARBShaderObjects.glUseProgramObjectARB(0); // Oculus shader is still active, turn it off...
 
         Display.processMessages();
     }
