@@ -203,7 +203,7 @@ public class PluginManager implements IEventListener
         Posef pose = new Posef();
 
         // Poll all plugins
-        pollAll(0f);
+        //pollAll(0f);
 
         // Mark beginEyeRender with stereo providers
         for( IBasePlugin p : thePluginManager.allPlugins )
