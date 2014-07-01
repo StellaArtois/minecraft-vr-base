@@ -35,3 +35,6 @@ Launch configuration:
 MainClass: net.minecraft.launchwrapper.Launch
 Args: --version 1.7 --tweakClass cpw.mods.fml.common.launcher.FMLTweaker --accessToken test
 JVM Args: -Dfml.ignoreInvalidMinecraftCertificates=true -Dfml.coreMods.load=com.minecraft_vr.VRLoadingPlugin 
+
+Forge gradle 1.7.10 no assets bug workaround:
+   add Program Args:  --assetIndex 1.7.10 --assetsDir C:\Users\<username>\.gradle\caches\minecraft\assets
