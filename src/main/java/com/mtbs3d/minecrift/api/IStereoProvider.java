@@ -21,20 +21,12 @@ public interface IStereoProvider extends IBasePlugin
 
     public EyeRenderParams configureRendering(Sizei InTextureSize,
                                               Sizei OutTextureSize,
-                                              GLConfig glConfig,
-                                              boolean VSyncEnabled,
-                                              boolean useChromaticAbCorrection,
-                                              boolean useTimewarp,
-                                              boolean useVignette);
+                                              GLConfig glConfig);
 
     public EyeRenderParams configureRenderingDualTexture(Sizei InTexture1Size,
                                                          Sizei InTexture2Size,
                                                          Sizei OutDisplaySize,
-                                                         GLConfig glConfig,
-                                                         boolean VSyncEnabled,
-                                                         boolean useChromaticAbCorrection,
-                                                         boolean useTimewarp,
-                                                         boolean useVignette);
+                                                         GLConfig glConfig);
 
     public void resetRenderConfig();
 

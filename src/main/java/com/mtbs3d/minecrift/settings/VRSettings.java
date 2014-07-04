@@ -67,6 +67,7 @@ public class VRSettings
     public boolean useChromaticAbCorrection = true;
     public boolean useTimewarp = true;
     public boolean useVignette = true;
+    public boolean useLowPersistence = true; // TODO: Support properly
     public boolean useDistortionTextureLookupOptimisation = false;
     public boolean useFXAA = false;
     public float hudScale = 0.65f;

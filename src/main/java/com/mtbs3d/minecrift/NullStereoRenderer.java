@@ -25,12 +25,12 @@ public class NullStereoRenderer extends BasePlugin implements IStereoProvider {
     }
 
     @Override
-    public EyeRenderParams configureRendering(Sizei InTextureSize, Sizei OutTextureSize, GLConfig glConfig, boolean VSyncEnabled, boolean useChromaticAbCorrection, boolean useTimewarp, boolean useVignette) {
+    public EyeRenderParams configureRendering(Sizei InTextureSize, Sizei OutTextureSize, GLConfig glConfig) {
         return null;
     }
 
     @Override
-    public EyeRenderParams configureRenderingDualTexture(Sizei InTexture1Size, Sizei InTexture2Size, Sizei OutDisplaySize, GLConfig glConfig, boolean VSyncEnabled, boolean useChromaticAbCorrection, boolean useTimewarp, boolean useVignette) {
+    public EyeRenderParams configureRenderingDualTexture(Sizei InTexture1Size, Sizei InTexture2Size, Sizei OutDisplaySize, GLConfig glConfig) {
         return null;
     }
 
