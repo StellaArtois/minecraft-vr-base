@@ -55,6 +55,12 @@ public class NullStereoRenderer extends BasePlugin implements IStereoProvider {
     }
 
     @Override
+    public boolean isGuiOrtho()
+    {
+        return true;
+    }
+
+    @Override
     public FrameTiming getFrameTiming() {
         return null;
     }

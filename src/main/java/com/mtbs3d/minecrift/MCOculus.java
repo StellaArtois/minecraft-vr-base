@@ -57,6 +57,12 @@ public class MCOculus extends OculusRift //OculusRift does most of the heavy lif
         return true;
     }
 
+    @Override
+    public boolean isGuiOrtho()
+    {
+        return false;
+    }
+
     public FrameTiming getFrameTiming() { return frameTiming; };
 
     public static UserProfileData theProfileData = null;
@@ -126,13 +132,15 @@ public class MCOculus extends OculusRift //OculusRift does most of the heavy lif
     }
 
     @Override
-    public Vec3 getCenterEyePosition() {
-        return null;   // TODO:
+    public Vec3 getCenterEyePosition()
+    {
+        return null;
     }
 
     @Override
-    public Vec3 getEyePosition(EyeType eye) {
-        return null;    // TODO:
+    public Vec3 getEyePosition(EyeType eye)
+    {
+        return super.getEyePosition(eye);
     }
 
     @Override

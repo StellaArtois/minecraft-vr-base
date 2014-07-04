@@ -36,6 +36,8 @@ public interface IStereoProvider extends IBasePlugin
 
     public boolean isStereo();
 
+    public boolean isGuiOrtho();
+
     public FrameTiming getFrameTiming();
 
     public Posef beginEyeRender(EyeType eye);
