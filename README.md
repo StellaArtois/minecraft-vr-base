@@ -20,15 +20,7 @@ BUILDING
 
 Uses gradle.
 
-gradlew setupDecompWorkspace will create a development workspace
-gradlew eclipse will create an eclipse project in this directory
-gradlew idea will create an intelij project in this directory
-gradlew natives will copy the minecraft-vr natives into the dev env
-
-gradlew build will build all dependencies and the mod.
-
-gradlew cleanCache clean setupDecompWorkspace --refresh-dependencies --info
-gradlew idea natives --info
+gradlew clean setupDecompWorkspace idea natives --refresh-dependencies --info
 
 Launch configuration:
 
@@ -37,4 +29,4 @@ Args: --version 1.7 --tweakClass cpw.mods.fml.common.launcher.FMLTweaker --acces
 JVM Args: -Dfml.ignoreInvalidMinecraftCertificates=true -Dfml.coreMods.load=com.minecraft_vr.VRLoadingPlugin 
 
 Forge gradle 1.7.10 no assets bug workaround:
-   add Program Args:  --assetIndex 1.7.10 --assetsDir C:\Users\<username>\.gradle\caches\minecraft\assets
+   add Program Args to project run config:  --assetIndex 1.7.10 --assetsDir C:\Users\<username>\.gradle\caches\minecraft\assets
