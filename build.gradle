@@ -27,7 +27,7 @@ minecraft {
 }
 
 project.ext {
-	optifineVersion           = '1.7.2_HD_U_D1'
+	optifineVersion           = '1.7.10_HD_U_A4'
 	jRiftVersion              = '0.3.2.1'
 	jRiftLibraryVersion       = '0.3.2.1'
 	jMumbleVersion            = '1.0'
